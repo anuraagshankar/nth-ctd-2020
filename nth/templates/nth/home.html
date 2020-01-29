@@ -1,0 +1,12 @@
+<form method="post" action="{% url 'nth:Home' %}">
+    {% csrf_token %}
+    <input name="first_name" placeholder="First Name" type="text" required>
+    <br><input name="last_name" placeholder="Last Name" type="text" required>
+    <br><input name="mobile_number" placeholder="Mobile Number" type="tel" required>
+    <br><input name="username" placeholder="Username" type="text" required>
+    <br><input name="password" placeholder="Password" type="password" onchange="if(this.checkValidity()) form.password_confirm.pattern = this.value;" required>
+    <br><input name="password_confirm" placeholder="Re-enter Password" type="password" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
+    <br><input name="email" placeholder="Email" type="email" required>
+    <br><input name="college" placeholder="College" type="text" required>
+    <br><button type="submit">Create account</button>
+</form>
