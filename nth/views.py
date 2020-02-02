@@ -14,6 +14,8 @@ levels = {
     5 : 'level5',
 }
 
+leaderboard = Player.objects.all()
+
 class Home(View):
     template_name = 'nth/home.html'
     def get(self, request):
@@ -69,6 +71,9 @@ def level2(request):
     if not request.user.is_authenticated: return redirect('/')
 
     player = Player.objects.get(user = request.user)
+    if player.level == 1:
+        player.level = 2
+        player.save()
     return render(request, 'nth/level2.html', {'player' : player})
 
 def level3(request):
