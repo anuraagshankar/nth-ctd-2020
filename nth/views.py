@@ -60,35 +60,47 @@ def Logout(request):
     return redirect('/')
 
 def level1(request):
-    return render(request, 'nth/level1.html')
+    if not request.user.is_authenticated: return redirect('/')
+
+    player = Player.objects.get(user = request.user)
+    return render(request, 'nth/level1.html', {'player' : player})
 
 def level2(request):
-    return render(request, 'nth/level2.html')
+    if not request.user.is_authenticated: return redirect('/')
+
+    player = Player.objects.get(user = request.user)
+    return render(request, 'nth/level2.html', {'player' : player})
 
 def level3(request):
+    if not request.user.is_authenticated: return redirect('/')
+
     player = Player.objects.get(user = request.user)
     if player.level < 2: return redirect('/' + levels[player.level])
     else:
         if player.level == 2:
             player.level = 3
             player.save()
-        return render(request, 'nth/level3.html')
+        return render(request, 'nth/level3.html', {'player' : player})
 
 def level4(request):
+    if not request.user.is_authenticated: return redirect('/')
+    
     player = Player.objects.get(user = request.user)
     if player.level < 3: return redirect('/' + levels[player.level])
     else:
         if player.level == 3:
             player.level = 4
             player.save() 
-        return render(request, 'nth/level4.html')
+        return render(request, 'nth/level4.html', {'player' : player})
 
 def level5(request):
+    if not request.user.is_authenticated: return redirect('/')
+
     player = Player.objects.get(user = request.user)
     if player.level < 4: return redirect('/' + levels[player.level])
     else:
         if player.level == 4:
             player.level = 5
             player.save()
-        return render(request, 'nth/level5.html')
+        return render(request, 'nth/level5.html', {'player' : player})
 
