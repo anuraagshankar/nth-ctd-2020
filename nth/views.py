@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from .models import Player
 from django.db.utils import IntegrityError
+from .tasks import leaderboard
 
 levels = {
     1 : 'level1',
@@ -14,12 +15,10 @@ levels = {
     5 : 'level5',
 }
 
-leaderboard = Player.objects.all()
-
 class Home(View):
     template_name = 'nth/home.html'
     def get(self, request):
-        return render(request, self.template_name)
+        return render(request, self.template_name, {'leaderboard':leaderboard})
     def post(self, request):
         try:
             user = User()

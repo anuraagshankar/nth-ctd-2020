@@ -7,7 +7,7 @@ class Player(models.Model):
     college = models.TextField(default="N/A")
     mobile_number = models.BigIntegerField(default=0)
     level = models.IntegerField(default=1)
-    last_time = models.TimeField(auto_now=True)
+    last_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.user.username
