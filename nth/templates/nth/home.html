@@ -108,8 +108,8 @@
             <!-- Leaderboard Code -->
             <table border="0">
               <thead style="font-size: 20px;color: #32325d;"><td>Player</td><td style="padding-left: 30px;">Level</td></thead>
-              {% for player in leaderboard %}
-              <tr><td>{{ player.user.username }}</td><td style="padding-left: 30px;">{{ player.level }}</td></tr>
+              {% for p in leaderboard %}
+              <tr><td>{{ p.player.user.username }}</td><td style="padding-left: 30px;">{{ p.player.level }}</td></tr>
               {% endfor %}
             </table>
           </div>

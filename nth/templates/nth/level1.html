@@ -322,8 +322,14 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                ... <!-- Leaderboard -->
+                <div class="modal-body" style="color: #32325d;">
+                <!-- Leaderboard -->
+                <table border="0">
+                    <thead style="font-size: 20px;color: #32325d;"><td>Player</td><td style="padding-left: 30px;">Level</td></thead>
+                    {% for p in leaderboard %}
+                    <tr><td>{{ p.player.user.username }}</td><td style="padding-left: 30px;">{{ p.player.level }}</td></tr>
+                    {% endfor %}
+                </table>
                 </div>
             </div>
         </div>
@@ -382,7 +388,7 @@
                 Username: {{ player.user.username }} <br>
                 Name: {{ player.user.first_name }} {{ player.user.last_name }} <br>
                 Level: {{ player.level }} <br>
-                Rank:  <br>
+                Rank: {{ rank }} <br>
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-primary" type="submit" href="/logout/">Logout</a>

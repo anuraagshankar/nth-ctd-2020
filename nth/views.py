@@ -3,9 +3,8 @@ from django.views.generic import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from .models import Player
+from .models import *
 from django.db.utils import IntegrityError
-from .tasks import leaderboard
 
 levels = {
     1 : 'level1',
@@ -18,7 +17,7 @@ levels = {
 class Home(View):
     template_name = 'nth/home.html'
     def get(self, request):
-        return render(request, self.template_name, {'leaderboard':leaderboard})
+        return render(request, self.template_name, {'leaderboard':Leaderboard.objects.all()})
     def post(self, request):
         try:
             user = User()
@@ -64,47 +63,64 @@ def level1(request):
     if not request.user.is_authenticated: return redirect('/')
 
     player = Player.objects.get(user = request.user)
-    return render(request, 'nth/level1.html', {'player' : player})
+    rank = getRank(player)
+
+    return render(request, 'nth/level1.html', {'player' : player, 'leaderboard':Leaderboard.objects.all(), 'rank' : rank})
 
 def level2(request):
     if not request.user.is_authenticated: return redirect('/')
 
     player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
     if player.level == 1:
         player.level = 2
         player.save()
-    return render(request, 'nth/level2.html', {'player' : player})
+    return render(request, 'nth/level2.html', {'player' : player, 'leaderboard':Leaderboard.objects.all(), 'rank' : rank})
 
 def level3(request):
     if not request.user.is_authenticated: return redirect('/')
 
     player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
     if player.level < 2: return redirect('/' + levels[player.level])
     else:
         if player.level == 2:
             player.level = 3
             player.save()
-        return render(request, 'nth/level3.html', {'player' : player})
+        return render(request, 'nth/level3.html', {'player' : player, 'leaderboard':Leaderboard.objects.all(), 'rank' : rank})
 
 def level4(request):
     if not request.user.is_authenticated: return redirect('/')
     
     player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
     if player.level < 3: return redirect('/' + levels[player.level])
     else:
         if player.level == 3:
             player.level = 4
             player.save() 
-        return render(request, 'nth/level4.html', {'player' : player})
+        return render(request, 'nth/level4.html', {'player' : player, 'leaderboard':Leaderboard.objects.all(), 'rank' : rank})
 
 def level5(request):
     if not request.user.is_authenticated: return redirect('/')
 
     player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
     if player.level < 4: return redirect('/' + levels[player.level])
+
     else:
         if player.level == 4:
             player.level = 5
             player.save()
-        return render(request, 'nth/level5.html', {'player' : player})
+        return render(request, 'nth/level5.html', {'player' : player, 'leaderboard':Leaderboard.objects.all(), 'rank' : rank})
 
+def getRank(player):
+    rank = 1
+    for p in Leaderboard.objects.all():
+        if p.player == player: break
+        rank = rank + 1
+    return rank

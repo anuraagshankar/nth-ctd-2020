@@ -11,3 +11,9 @@ class Player(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Leaderboard(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.player
