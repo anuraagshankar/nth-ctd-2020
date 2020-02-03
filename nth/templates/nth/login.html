@@ -42,6 +42,11 @@
                 </div>
                 <form action="{% url 'nth:Login' %}" method="POST"> <!-- Post-Login-->
                   {% csrf_token %}
+                  {% for message in messages %}
+                      <font color="red" face="consolas">
+                        {{ message }} <br>
+                      </font>
+                  {% endfor %}
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">

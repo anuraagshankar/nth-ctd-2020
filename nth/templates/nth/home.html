@@ -171,6 +171,11 @@
                 <div class="card-body px-lg-5 py-lg-5">
                   <form action="{% url 'nth:Home' %}" method="POST"> <!-- Create Player View -->
                     {% csrf_token %}
+                    {% for message in messages %}
+                      <font color="red" face="consolas">
+                        {{ message }} <br>
+                      </font>
+                    {% endfor %}
                     <div class="form-group">
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
