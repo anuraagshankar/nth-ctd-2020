@@ -132,3 +132,5 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': 60,
     },
 }
+
+GOOGLE_RECAPTCHA_SECRET_KEY = '6Lc7FNYUAAAAAFmCz_go-937qnkJGmHvloa9D1bN'

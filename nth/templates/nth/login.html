@@ -43,7 +43,7 @@
                 <form action="{% url 'nth:Login' %}" method="POST"> <!-- Post-Login-->
                   {% csrf_token %}
                   {% for message in messages %}
-                      <font color="red" face="consolas">
+                      <font color="whitesmoke" face="consolas">
                         {{ message }} <br>
                       </font>
                   {% endfor %}
@@ -52,7 +52,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Username" type="text" name="username">
+                      <input class="form-control" placeholder="Username" type="text" name="username" style="color: #525f7f" onfocus="">
                     </div>
                   </div>
                   <div class="form-group">
@@ -60,7 +60,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Password" type="password" name="password">
+                      <input class="form-control" placeholder="Password" type="password" name="password" style="color: #525f7f ">
                     </div>
                   </div>
                   <div class="text-center">

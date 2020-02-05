@@ -22,11 +22,8 @@
 <body id="home">
   <header class="header-global">
     <!-- Navbar Start -->
-    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom fixed-top" style="position: fixed;">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom fixed-top bg-default" style="position: fixed;">
       <div class="container">
-        <a class="navbar-brand mr-lg-5" href="#home"> <!-- href to same page -->
-          <img src="{% static 'assets/img/brand/nth_logo.png' %}" style="scale: 2;" alt="NTH Logo"> <!-- NTH Logo comes here-->
-        </a>
         <button class="navbar-toggler mr-rg-auto" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -137,7 +134,7 @@
         <img src="{% static 'assets/img/brand/nth_logo.png' %}" height="400px" width="400px" alt="NTH Logo"> <!-- NTH Logo -->
         <p style="font-size: x-large;color: whitesmoke;">Network Treasure Hunt</p>
         <p style="font-size: large;color: whitesmoke;">Decrypt the Encrypted!</p>
-        <a class="btn btn-primary" type="submit" href="/login/">Start Hunting!</a> <!-- Login View -->
+        <a class="btn btn-primary" type="submit" href="/login/" style="height: 60px; padding-top: 17px;">Start Hunting!</a> <!-- Login View -->
       </div>
       <!-- NTH home end -->
       <!-- Registration Start -->
@@ -149,7 +146,7 @@
           </div>
           <div class="row justify-content-center">
             <div class="col" style="padding: 20px;">
-              <div class="card bg-secondary shadow border-0" style="padding-top: 50px;height: 700px;">
+              <div class="card bg-secondary shadow border-0" style="padding-top: 50px;height: 750px;">
                 <div class="card-body px-lg-5 py-lg-5">
                   <div class="text-center text-muted mb-4" style="font-size:x-large;">
                     Just one step away from the enthralling experience of online hunting!
@@ -167,12 +164,12 @@
               </div>
             </div>
             <div class="col" style="padding: 20px;">
-              <div class="card bg-secondary shadow border-0" style="height: 700px;padding-top: 20px;">
+              <div class="card bg-secondary shadow border-0" style="height: 750px;padding-top: 20px;">
                 <div class="card-body px-lg-5 py-lg-5">
                   <form action="{% url 'nth:Home' %}" method="POST"> <!-- Create Player View -->
                     {% csrf_token %}
                     {% for message in messages %}
-                      <font color="red" face="consolas">
+                      <font color="#525f7f" face="consolas">
                         {{ message }} <br>
                       </font>
                     {% endfor %}
@@ -181,53 +178,55 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input name="first_name" class="form-control" placeholder="First Name" type="text" required>
+                        <input name="first_name" class="form-control" placeholder="First Name" type="text" style="color: #525f7f " required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input name="last_name" class="form-control" placeholder="Last Name" type="text" required>
+                        <input name="last_name" class="form-control" placeholder="Last Name" type="text" style="color: #525f7f " required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                         </div>
-                        <input name="mobile_number" class="form-control" placeholder="Mobile Number" type="tel" pattern="[1-9]{1}[0-9]{9}" oninvalid="setCustomValidity('Please enter a valid 10-digit mobile number.')" required>
+                        <input name="mobile_number" class="form-control" placeholder="Mobile Number" style="color: #525f7f " type="tel" pattern="[1-9]+[0-9]{9}" required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input name="username" class="form-control" placeholder="Username" type="text" required>
+                        <input name="username" class="form-control" placeholder="Username" style="color: #525f7f " type="text" required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input name="password" class="form-control" placeholder="Password" type="password" onchange="if(this.checkValidity()) form.password_confirm.pattern = this.value;" required>
+                        <input name="password" class="form-control" placeholder="Password" type="password" style="color: #525f7f " onchange="if(this.checkValidity()) form.password_confirm.pattern = this.value;" required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input name="password_confirm" class="form-control" placeholder="Re-enter Password" type="password" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
+                        <input name="password_confirm" class="form-control" placeholder="Re-enter Password" type="password" style="color: #525f7f " onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
                       </div>
                     </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                         </div>
-                        <input name="email" class="form-control" placeholder="Email" type="email" required>
+                        <input name="email" class="form-control" placeholder="Email" type="email" style="color: #525f7f " required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                         </div>
-                        <input name="college" class="form-control" placeholder="College" type="text" required>
+                        <input name="college" class="form-control" placeholder="College" type="text" style="color: #525f7f " required>
                       </div>
+                      <script src='https://www.google.com/recaptcha/api.js'></script>
+                      <div class="g-recaptcha" data-sitekey="6Lc7FNYUAAAAAMbdFqonSEyZ3bPopXRYilSXiONh"></div>
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary mt-4">Create account</button>
+                      <button type="submit" class="btn btn-primary mt-4" style="height: 60px; padding-top: 12px;">Create account</button>
                     </div>
                   </form>
                 </div>
