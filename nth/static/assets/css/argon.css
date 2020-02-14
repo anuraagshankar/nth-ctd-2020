@@ -5958,8 +5958,7 @@ input[type='button'].btn-block
 {
     margin-bottom: 0;
     padding: 1.25rem 1.5rem;
-
-    border-bottom: .0625rem solid rgba(0, 0, 0, .05);
+    border: 0.5rem solid rgb(255, 255, 255, 0.5);
     background-color: #f6f9fc;
 }
 .card-header:first-child

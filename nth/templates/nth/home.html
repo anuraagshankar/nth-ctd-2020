@@ -178,13 +178,13 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input name="first_name" class="form-control" placeholder="First Name" type="text" style="color: #525f7f " required>
+                        <input name="first_name" class="form-control" placeholder="First Name" type="text" style="color: #525f7f " maxlength="20" required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input name="last_name" class="form-control" placeholder="Last Name" type="text" style="color: #525f7f " required>
+                        <input name="last_name" class="form-control" placeholder="Last Name" type="text" style="color: #525f7f " maxlength="20" required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
@@ -196,7 +196,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input name="username" class="form-control" placeholder="Username" style="color: #525f7f " type="text" required>
+                        <input name="username" class="form-control" placeholder="Username" style="color: #525f7f " type="text" maxlength="20" required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
@@ -221,7 +221,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                         </div>
-                        <input name="college" class="form-control" placeholder="College" type="text" style="color: #525f7f " required>
+                        <input name="college" class="form-control" placeholder="College" type="text" style="color: #525f7f " maxlength="50" required>
                       </div>
                       <script src='https://www.google.com/recaptcha/api.js'></script>
                       <div class="g-recaptcha" data-sitekey="6Lc7FNYUAAAAAMbdFqonSEyZ3bPopXRYilSXiONh"></div>
@@ -241,7 +241,7 @@
             <u>About Us</u>
           </div>
           <div class="row justify-content-left">
-            <div class="col-rg">
+            <div class="col-rg" style="width: 350px;">
               <img src="{% static 'assets/img/brand/nth_logo.png' %}" height="400px" width="400px" alt="NTH Logo">
             </div>
             <div class="col-lg">
@@ -314,7 +314,7 @@
         <div class="col" style="padding: 20px;">
           <img src="{% static 'assets/img/brand/ieee_logo.png' %}" style="scale: 0.8;">
         </div>
-        <div class="col" style="color:whitesmoke; font-size: 20px; padding: 20px;">
+        <div class="col" style="color:whitesmoke; font-size: 20px; padding-top: 40px;padding-right: 40px;">
           Designed by WebTeam@PISB
         </div>
         <div class="col" style="padding: 20px;">
@@ -329,6 +329,6 @@
   <script src="{% static 'assets/vendor/bootstrap/bootstrap.min.js' %}"></script>
   <script src="{% static 'assets/vendor/headroom/headroom.min.js' %}"></script>
   <!-- Argon JS -->
-  <script src="{% static 'assets/js/argon.js?v=1.1.0' %}"></script>
+  <script src="{% static 'assets/js/argon.js' %}"></script>
 </body>
 </html>
