@@ -16,20 +16,51 @@
   <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="{% static 'assets/css/argon.css' %}" rel="stylesheet">
+  <style>
+    @keyframes translate-up
+    {
+      from {margin-top: 1000px;}
+      to {margin-bottom: 1000px;}
+    }
+
+    @keyframes translate-down
+    {
+      from {margin-bottom: 1000px;}
+      to {margin-top: 1000px;}
+    }
+
+    .translate-up-animation
+    {
+      animation-name: translate-up;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+
+    .translate-down-animation
+    {
+      animation-name: translate-down;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  </style>
 </head>
 
 <body>
   <main>
     <section class="section section-shaped section-lg">
       <div class="shape shape-style-1 bg-gradient-default">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span class="translate-up-animation"></span>
+        <span class="translate-down-animation"></span>
+        <span class="translate-up-animation"></span>
+        <span class="translate-down-animation"></span>
+        <span class="translate-up-animation"></span>
+        <span class="translate-down-animation"></span>
+        <span class="translate-up-animation"></span>
+        <span class="translate-down-animation"></span>
+        <span class="translate-up-animation"></span>
+        <span class="translate-down-animation"></span>
       </div>
       <div class="container pt-lg-md">
         <div class="row justify-content-center">
@@ -88,7 +119,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer" style="background-color: #8898aa;">
+  <footer class="footer" style="background-color: #8898aa;height: 130px; padding-top: 10px;">
     <div class="container">
       <div class="row">
         <div class="col" style="padding: 20px;">
