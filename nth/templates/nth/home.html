@@ -17,6 +17,7 @@
   <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="{% static 'assets/css/argon.css' %}" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
   <style>
     @keyframes translate-up
     {
@@ -148,7 +149,7 @@
     <section class="section section-shaped section-lg">
       <div class="shape shape-style-1 bg-gradient-default">
         <span class="translate-up-animation"></span>
-        <span class="translate-down-animation"></span>
+        <span class="translate-down-animation" style="left: 20%;"></span>
         <span class="translate-up-animation"></span>
         <span class="translate-down-animation"></span>
         <span class="translate-up-animation"></span>
@@ -159,11 +160,14 @@
         <span class="translate-down-animation"></span>
       </div>
       <!-- NTH home start -->
-      <div style="text-align: center; padding-top: 20px;padding-bottom: 100px;">
+      <div style="text-align: center; padding-top: 20px;padding-bottom: 200px;">
         <img src="{% static 'assets/img/brand/nth_logo.png' %}" height="500px" width="500px" alt="NTH Logo"> <!-- NTH Logo -->
         <p style="font-size: x-large;color: whitesmoke;">Network Treasure Hunt</p>
         <p style="font-size: large;color: whitesmoke;">Decrypt the Encrypted!</p>
-        <a class="btn btn-primary" type="submit" href="/login/" style="height: 60px; padding-top: 17px;">Start Hunting!</a> <!-- Login View -->
+        <!--
+        <a class="btn btn-primary" type="submit" href="/login/" style="height: 60px; padding-top: 17px;">Start Hunting!</a>
+        -->
+        <p id="timer" style="font-family: 'Aldrich';color: whitesmoke;font-size: 48px;"></p>
       </div>
       <!-- NTH home end -->
       <!-- Registration Start -->
@@ -359,5 +363,39 @@
   <script src="{% static 'assets/vendor/headroom/headroom.min.js' %}"></script>
   <!-- Argon JS -->
   <script src="{% static 'assets/js/argon.js' %}"></script>
+  <!-- Timer Script -->
+  
+  <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Feb 29, 2020 21:00:00").getTime();
+    
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+    
+      // Get today's date and time
+      var now = new Date().getTime();
+        
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+        
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+      // Output the result in an element with id="timer"
+      document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+        
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        // Showing button when timer expires
+        document.getElementById("timer").innerHTML = '<a class="btn btn-primary" type="submit" href="/login/" style="height: 60px; padding-top: 17px;font-family: sans-serif;">Start Hunting!</a>';
+      }
+    }, 1000);
+  </script>
+  
 </body>
 </html>
