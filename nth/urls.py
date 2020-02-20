@@ -6,7 +6,7 @@ app_name = 'nth'
 
 urlpatterns = [
     path('', views.Home.as_view(), name='Home'),
-    path('login/', views.Login.as_view(), name='Login'),
+    path('loginHunt/', views.Login.as_view(), name='Login'),
     path(levels[1]+'/', views.level1, name = 'Level1'),
     path(levels[2]+'/', views.level2, name = 'Level2'),
     path(levels[3]+'/', views.level3, name = 'Level3'),
