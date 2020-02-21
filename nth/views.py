@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from .models import *
 import urllib
+import urllib.request
 from django.conf import settings
 import json
 from django.db.utils import IntegrityError
@@ -30,11 +31,6 @@ class Home(View):
             user.username = request.POST['username']
             user.set_password(request.POST['password'])
             user.email = request.POST['email']
-            user.save()
-            player = Player()
-            player.user = user
-            player.mobile_number = request.POST['mobile_number']
-            player.college = request.POST['college']
 
             recaptcha_response = request.POST.get('g-recaptcha-response')
             url = 'https://www.google.com/recaptcha/api/siteverify'
@@ -49,7 +45,12 @@ class Home(View):
 
             if not result['success']:
                 messages.error(request, 'Invalid reCAPTCHA. Please try again.')
-            
+                return render(request, self.template_name, {'leaderboard':Leaderboard.objects.all()[:10]})
+            user.save()
+            player = Player()
+            player.user = user
+            player.mobile_number = request.POST['mobile_number']
+            player.college = request.POST['college']
             player.save()
         except IntegrityError:
             messages.error(request, 'Username Already Exists!')

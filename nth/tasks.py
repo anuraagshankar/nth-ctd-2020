@@ -8,4 +8,4 @@ def generate_leaderboard():
     Leaderboard.objects.all().delete()
     for player in leaderboard:
         Leaderboard.objects.create(player=player)
-    print(leaderboard)
+    print("Sorting Leaderboard")

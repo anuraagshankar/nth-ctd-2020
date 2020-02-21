@@ -130,7 +130,7 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_BEAT_SCHEDULE = {
     'generate_leaderboard': {
         'task': 'nth.tasks.generate_leaderboard',
-        'schedule': 60,
+        'schedule': 90,
     },
 }
 
