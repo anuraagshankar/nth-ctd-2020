@@ -44,6 +44,59 @@
       animation-iteration-count: infinite;
       animation-direction: alternate;
     }
+    @media screen and (max-width: 768px) {
+        .web {
+            display: none;
+        }
+        .mob {
+            display: block;
+        }
+        .level_name {
+            margin-top: 70px !important;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .web {
+            display: block;
+        }
+        .mob {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 620px) {
+        .center-on-mob {
+            text-align: center;
+        }
+        .justify-on-mob {
+            text-align: justify;
+        }
+        .event-name {
+            font-size: 36px;
+        }
+        .content-wrap section p {
+            margin: 0;
+            padding: 0.75em 0;
+            font-size: 1.2em;
+            line-height: 1.3;
+        }
+        .logoh {
+            display: none;
+        }
+        .logov {
+            display: block;
+        }
+    }
+
+    @media screen and (min-width: 620px) {
+        .logoh {
+            display: block;
+        }
+        .logov {
+            display: none;
+        }
+    }
   </style>
 </head>
 
@@ -110,7 +163,6 @@
                       <li>Do not prompt or reveal the answers/hints anywhere else you will be disqualified.</li>
                       <li>We reserve the right to ban any user for the use of any unfair means.</li>
                       <li>The decision regarding winners by the NTH team is final and binding.</li>
-                      <li>The leaderboard will be refreshed every 90 seconds.</li>
                   </ul>
                 </div>
               </div>
@@ -121,16 +173,33 @@
     </section>
   </main>
   <footer class="footer" style="background-color: #8898aa;">
-    <div class="container">
-      <div class="row">
-        <div class="col" style="padding: 20px;">
-          <img src="{% static 'assets/img/brand/ieee_logo.png' %}" style="scale: 0.8;">
+    <div class="web">
+      <div class="container">
+        <div class="row">
+          <div class="col" style="padding: 20px;">
+            <img src="{% static 'assets/img/brand/ieee_logo.png' %}" style="scale: 0.8;">
+          </div>
+          <div class="col" style="color:whitesmoke; font-size: 20px; padding-top: 40px;padding-right: 40px;">
+            Designed by WebTeam@PISB
+          </div>
+          <div class="col" style="padding: 20px;">
+            <img src="{% static 'assets/img/brand/pisb_logo.png' %}" height="75px" width="225px">
+          </div>
         </div>
-        <div class="col" style="color:whitesmoke; font-size: 20px; padding-top: 40px;padding-right: 40px;">
-          Designed by WebTeam@PISB
-        </div>
-        <div class="col" style="padding: 20px;">
-          <img src="{% static 'assets/img/brand/pisb_logo.png' %}" height="75px" width="225px">
+      </div>
+    </div>
+    <div class="mob">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <img src="{% static 'assets/img/brand/ieee_logo.png' %}" height="30px" width="96px">
+          </div>
+          <div class="col" style="color:whitesmoke; font-size: 12px;">
+            <b>Designed by WebTeam@PISB</b>
+          </div>
+          <div class="col">
+            <img src="{% static 'assets/img/brand/pisb_logo.png' %}" height="35px" width="110px">
+          </div>
         </div>
       </div>
     </div>

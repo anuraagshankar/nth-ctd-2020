@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9%qr=cao6)(i=&e!@x$qa3g1adx8kp1-6iwu*9%l!nnjbp6#!)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -120,19 +120,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-
-# Celery
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_BEAT_SCHEDULE = {
-    'generate_leaderboard': {
-        'task': 'nth.tasks.generate_leaderboard',
-        'schedule': 90,
-    },
-}
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6Lc7FNYUAAAAAFmCz_go-937qnkJGmHvloa9D1bN'
 

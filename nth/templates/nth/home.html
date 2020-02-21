@@ -19,7 +19,13 @@
   <link type="text/css" href="{% static 'assets/css/argon.css' %}" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
   <style>
+    table
+    {
 
+      border-collapse: separate;
+      border-spacing: 20px;
+
+    }
     @keyframes translate-up
     {
       from {margin-top: 1000px;}
@@ -181,17 +187,17 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="leaderboardModalLabel">Leaderboard</h5>
+            <h4 class="modal-title" id="leaderboardModalLabel">Leaderboard</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" style="text-align: center;">
             <!-- Leaderboard Code -->
-            <table border="0">
-              <thead style="font-size: 20px;color: #32325d;"><td>Player</td><td style="padding-left: 30px;">Level</td></thead>
+            <table border="0" align="center">
+              <thead style="font-size: 20px;color: #32325d;"><td>Rank</td><td>Player</td><td style="padding-left: 30px;">Level</td></thead>
               {% for p in leaderboard %}
-              <tr><td>{{ p.player.user.username }}</td><td style="padding-left: 30px;">{{ p.player.level }}</td></tr>
+              <tr><td></td><td>{{ p.user.username }}</td><td style="padding-left: 30px;">{{ p.level }}</td></tr>
               {% endfor %}
             </table>
           </div>
@@ -402,16 +408,33 @@
     </section>
   </main>
   <footer class="footer" style="background-color: #8898aa;">
-    <div class="container">
-      <div class="row">
-        <div class="col" style="padding: 20px;">
-          <img src="{% static 'assets/img/brand/ieee_logo.png' %}" style="scale: 0.8;">
+    <div class="web">
+      <div class="container">
+        <div class="row">
+          <div class="col" style="padding: 20px;">
+            <img src="{% static 'assets/img/brand/ieee_logo.png' %}" style="scale: 0.8;">
+          </div>
+          <div class="col" style="color:whitesmoke; font-size: 20px; padding-top: 40px;padding-right: 40px;">
+            Designed by WebTeam@PISB
+          </div>
+          <div class="col" style="padding: 20px;">
+            <img src="{% static 'assets/img/brand/pisb_logo.png' %}" height="75px" width="225px">
+          </div>
         </div>
-        <div class="col" style="color:whitesmoke; font-size: 20px; padding-top: 40px;padding-right: 40px;">
-          Designed by WebTeam@PISB
-        </div>
-        <div class="col" style="padding: 20px;">
-          <img src="{% static 'assets/img/brand/pisb_logo.png' %}" height="75px" width="225px">
+      </div>
+    </div>
+    <div class="mob">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <img src="{% static 'assets/img/brand/ieee_logo.png' %}" height="30px" width="96px">
+          </div>
+          <div class="col" style="color:whitesmoke; font-size: 12px;">
+            <b>Designed by WebTeam@PISB</b>
+          </div>
+          <div class="col">
+            <img src="{% static 'assets/img/brand/pisb_logo.png' %}" height="35px" width="110px">
+          </div>
         </div>
       </div>
     </div>
@@ -455,6 +478,16 @@
         document.getElementById("timer").innerHTML = '<a class="btn btn-primary" type="submit" href="/loginHunt/" style="height: 60px; padding-top: 17px;font-family: sans-serif;">Start Hunting!</a>';
       }
     }, 1000);
+  </script>
+  <script>
+    var table = document.getElementsByTagName('table')[0],
+    rows = table.getElementsByTagName('tr'),
+    text = 'textContent' in document ? 'textContent' : 'innerText';
+    console.log(text);
+
+    for (var i = 1, len = rows.length; i < len; i++){
+        rows[i].children[0][text] = i + rows[i].children[0][text];
+    }
   </script>
   
 </body>

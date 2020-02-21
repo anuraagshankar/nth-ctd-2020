@@ -22,7 +22,13 @@
         overflow-y: auto;
     }
     /* Float Shadow */
+    table
+    {
 
+      border-collapse: separate;
+      border-spacing: 20px;
+
+    }
     .hvr-float-shadow {
         display: inline-block;
         vertical-align: middle;
@@ -295,7 +301,7 @@
   <!-- Question End -->
 
   <!-- Sidenav Modal Button Start -->
-  <div style="position: absolute; right: 0;top: 10%;line-height: 50px;">
+  <div style="position: absolute; right: 0;top: 35%;line-height: 50px;">
     <div>
         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#leaderboard">
             <i class="ni ni-trophy"></i>
@@ -330,10 +336,10 @@
                 </div>
                 <div class="modal-body" style="color: #32325d;">
                 <!-- Leaderboard -->
-                <table border="0">
-                    <thead style="font-size: 20px;color: #32325d;"><td>Player</td><td style="padding-left: 30px;">Level</td></thead>
+                <table border="0" align="center" style="text-align: center;">
+                    <thead style="font-size: 20px;color: #32325d;"><td>Rank</td><td>Player</td><td style="padding-left: 30px;">Level</td></thead>
                     {% for p in leaderboard %}
-                    <tr><td>{{ p.player.user.username }}</td><td style="padding-left: 30px;">{{ p.player.level }}</td></tr>
+                    <tr><td></td><td>{{ p.user.username }}</td><td style="padding-left: 30px;">{{ p.level }}</td></tr>
                     {% endfor %}
                 </table>
                 </div>
@@ -406,13 +412,13 @@
   <footer class="footer" style="background-color: #5e72e4;">
     <div style="position: absolute;top: 93%;left: 50%;transform: translateX(-50%);">
       <div style="width:100%">
-        <a href="https://www.facebook.com/NTHCredenz/" title="Like us on Facebook">
+        <a href="https://www.facebook.com/NTHCredenz/" title="Like us on Facebook" target="_blank">
           <i class="fa fa-facebook-square" style="scale: 3;color: whitesmoke;"></i>
         </a>
-        <a href="https://www.instagram.com/_nth2019" title="Follow us on Instagram" style="padding-left: 40px;">
+        <a href="https://www.instagram.com/_nth2019" title="Follow us on Instagram" style="padding-left: 40px;" target="_blank">
           <i class="fa fa-instagram" style="scale: 3;color: whitesmoke;"></i>
         </a>
-        <a href="https://twitter.com/NthCredenz" title="Follow us on Twitter" style="padding-left: 40px;">
+        <a href="https://twitter.com/NthCredenz" title="Follow us on Twitter" style="padding-left: 40px;" target="_blank">
           <i class="fa fa-twitter-square" style="scale: 3;color: whitesmoke;"></i>
         </a>
       </div>
@@ -425,5 +431,15 @@
   <script src="{% static 'assets/vendor/headroom/headroom.min.js' %}"></script>
   <!-- Argon JS -->
   <script src="{% static 'assets/js/argon.js' %}"></script>
+  <script>
+    var table = document.getElementsByTagName('table')[0],
+    rows = table.getElementsByTagName('tr'),
+    text = 'textContent' in document ? 'textContent' : 'innerText';
+    console.log(text);
+
+    for (var i = 1, len = rows.length; i < len; i++){
+        rows[i].children[0][text] = i + rows[i].children[0][text];
+    }
+  </script>
 </body>
 </html>

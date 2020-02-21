@@ -22,7 +22,7 @@ levels = {
 class Home(View):
     template_name = 'nth/home.html'
     def get(self, request):
-        return render(request, self.template_name, {'leaderboard':Leaderboard.objects.all()[:10]})
+        return render(request, self.template_name, {'leaderboard':Player.objects.all().order_by('-level', 'last_time')[:10]})
     def post(self, request):
         try:
             user = User()
@@ -45,16 +45,17 @@ class Home(View):
 
             if not result['success']:
                 messages.error(request, 'Invalid reCAPTCHA. Please try again.')
-                return render(request, self.template_name, {'leaderboard':Leaderboard.objects.all()[:10]})
+                return render(request, self.template_name, {'leaderboard':Player.objects.all().order_by('-level', 'last_time')[:10]})
             user.save()
             player = Player()
             player.user = user
             player.mobile_number = request.POST['mobile_number']
             player.college = request.POST['college']
             player.save()
+            messages.error(request, 'Successfully Registered!')
         except IntegrityError:
             messages.error(request, 'Username Already Exists!')
-        return render(request, self.template_name, {'leaderboard':Leaderboard.objects.all()[:10]})
+        return render(request, self.template_name, {'leaderboard':Player.objects.all().order_by('-level', 'last_time')[:10]})
 
 class Login(View):
     template_name = 'nth/login.html'
@@ -87,7 +88,7 @@ def level1(request):
     player = Player.objects.get(user = request.user)
     rank = getRank(player)
 
-    return render(request, 'nth/level1.html', {'player' : player, 'leaderboard':Leaderboard.objects.all()[:10], 'rank' : rank})
+    return render(request, 'nth/level1.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[:10], 'rank' : rank})
 
 def level2(request):
     if not request.user.is_authenticated: return redirect('/')
@@ -98,7 +99,7 @@ def level2(request):
     if player.level == 1:
         player.level = 2
         player.save()
-    return render(request, 'nth/level2.html', {'player' : player, 'leaderboard':Leaderboard.objects.all()[:10], 'rank' : rank})
+    return render(request, 'nth/level2.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[:10], 'rank' : getRank(player)})
 
 def level3(request):
     if not request.user.is_authenticated: return redirect('/')
@@ -111,7 +112,7 @@ def level3(request):
         if player.level == 2:
             player.level = 3
             player.save()
-        return render(request, 'nth/level3.html', {'player' : player, 'leaderboard':Leaderboard.objects.all()[:10], 'rank' : rank})
+        return render(request, 'nth/level3.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[:10], 'rank' : getRank(player)})
 
 def level4(request):
     if not request.user.is_authenticated: return redirect('/')
@@ -123,8 +124,8 @@ def level4(request):
     else:
         if player.level == 3:
             player.level = 4
-            player.save() 
-        return render(request, 'nth/level4.html', {'player' : player, 'leaderboard':Leaderboard.objects.all()[:10], 'rank' : rank})
+            player.save()
+        return render(request, 'nth/level4.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[:10], 'rank' : getRank(player)})
 
 def level5(request):
     if not request.user.is_authenticated: return redirect('/')
@@ -138,11 +139,11 @@ def level5(request):
         if player.level == 4:
             player.level = 5
             player.save()
-        return render(request, 'nth/level5.html', {'player' : player, 'leaderboard':Leaderboard.objects.all()[:10], 'rank' : rank})
+        return render(request, 'nth/level5.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[:10], 'rank' : getRank(player)})
 
 def getRank(player):
     rank = 1
-    for p in Leaderboard.objects.all():
-        if p.player == player: break
+    for p in Player.objects.all().order_by('-level', 'last_time'):
+        if p == player: break
         rank = rank + 1
     return rank
