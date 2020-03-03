@@ -28,14 +28,14 @@
     }
     @keyframes translate-up
     {
-      from {margin-top: 200px;}
-      to {margin-bottom: 200px;}
+      from {margin-top: 1000px;}
+      to {margin-bottom: 1000px;}
     }
 
     @keyframes translate-down
     {
-      from {margin-bottom: 200px;}
-      to {margin-top: 200px;}
+      from {margin-bottom: 1000px;}
+      to {margin-top: 1000px;}
     }
 
     .translate-up-animation
@@ -155,7 +155,7 @@
                 <span class="nav-link-inner--text" style="font-size: large;">Leaderboard</span>
               </a>
             </li>          
--->
+ 
          </ul>
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
             <li class="nav-item">
@@ -230,7 +230,7 @@
         <img class="mob" src="{% static 'assets/img/brand/nth_logo.png' %}" height="300px" width="300px" alt="NTH Logo" style="margin-left: auto;margin-right: auto;"> <!-- NTH Logo -->
         <p style="font-size: x-large;color: whitesmoke;">Network Treasure Hunt</p>
         <p style="font-size: large;color: whitesmoke;">Decrypt the Encrypted!</p>
-        <p id="timer" style="font-family: 'Aldrich';color: whitesmoke;font-size: 40px;"></p>
+        <p id="timer" style="font-family: 'Aldrich';color: whitesmoke;font-size: 48px;"></p>
       </div>
       <!-- NTH home end -->
       <!-- Registration Start -->
@@ -306,7 +306,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                         </div>
-                        <input name="mobile_number" class="form-control" placeholder="Mobile Number" style="color: #525f7f " type="tel" pattern="[1-9]+[0-9]{9}" maxlength="20" required>
+                        <input name="mobile_number" class="form-control" placeholder="Mobile Number" style="color: #525f7f " type="tel" pattern="[1-9]+[0-9]{9}" required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
@@ -318,20 +318,20 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input name="password" class="form-control" placeholder="Password" type="password" style="color: #525f7f " maxlength="25" onchange="if(this.checkValidity()) form.password_confirm.pattern = this.value;" required>
+                        <input name="password" class="form-control" placeholder="Password" type="password" style="color: #525f7f " onchange="if(this.checkValidity()) form.password_confirm.pattern = this.value;" required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input name="password_confirm" class="form-control" placeholder="Re-enter Password" type="password" style="color: #525f7f " maxlength="25" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
+                        <input name="password_confirm" class="form-control" placeholder="Re-enter Password" type="password" style="color: #525f7f " onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
                       </div>
                     </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                         </div>
-                        <input name="email" class="form-control" placeholder="Email" type="email" style="color: #525f7f " maxlength="40" required>
+                        <input name="email" class="form-control" placeholder="Email" type="email" style="color: #525f7f " required>
                       </div>
                       <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
@@ -446,7 +446,7 @@
           <div class="col">
             <img src="{% static 'assets/img/brand/ieee_logo.png' %}" height="30px" width="96px">
           </div>
-          <div class="col" style="color:whitesmoke; font-size: 12px;text-align: center">
+          <div class="col" style="color:whitesmoke; font-size: 12px;">
             <b>Designed by WebTeam@PISB</b>
           </div>
           <div class="col">

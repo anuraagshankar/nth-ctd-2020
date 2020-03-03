@@ -1,0 +1,30 @@
+<body>
+    <b>Admins :</b>
+    <table border=1>
+    <thead><td>Username</td><td>First Name</td><td>Last Name</td><td>Email-Id</td><td>Mobile Number</td><td>College</td><td>Level</td><td>Registration Time</td><td>Last Level Time</td></thead>
+    {% for p in players %}
+        {% if p.user.is_staff %}
+        <tr><td>{{ p.user.username }}</td><td>{{ p.user.first_name }}</td><td>{{ p.user.last_name }}</td><td>{{ p.user.email }}</td><td>{{ p.mobile_number }}</td><td>{{ p.college }}</td><td>{{ p.level }}</td><td>{{ p.reg_time }}</td><td>{{ p.last_time }}</td></tr>
+        {% endif %}
+    {% endfor %}
+    </table>
+    <b>Players - {{ count }} - :</b>
+    <table border=1>
+    <thead><td>Sr. No.</td><td>Username</td><td>First Name</td><td>Last Name</td><td>Email-Id</td><td>Mobile Number</td><td>College</td><td>Level</td><td>Registration Time</td><td>Last Level Time</td></thead>
+    {% for p in players %}
+        {% if not p.user.is_staff %}
+        <tr><td></td><td>{{ p.user.username }}</td><td>{{ p.user.first_name }}</td><td>{{ p.user.last_name }}</td><td>{{ p.user.email }}</td><td>{{ p.mobile_number }}</td><td>{{ p.college }}</td><td>{{ p.level }}</td><td>{{ p.reg_time }}</td><td>{{ p.last_time }}</td></tr>
+        {% endif %}
+    {% endfor %}
+    </table>
+    <script>
+        var table = document.getElementsByTagName('table')[1],
+        rows = table.getElementsByTagName('tr'),
+        text = 'textContent' in document ? 'textContent' : 'innerText';
+        console.log(text);
+
+        for (var i = 1, len = rows.length; i < len; i++){
+            rows[i].children[0][text] = i + rows[i].children[0][text];
+        }
+    </script>
+</body>

@@ -20,3 +20,4 @@ urlpatterns = [
     path('', include('nth.urls')),
     path('notatemplate/', admin.site.urls),
 ]
+
