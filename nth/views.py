@@ -13,11 +13,10 @@ from django.contrib import messages
 from django.http import Http404
 
 levels = {
-    1 : 'level1',
-    2 : 'level2',
-    3 : 'level3',
-    4 : 'level4',
-    5 : 'level5',
+    1:'level1', 2:'nickabadzis', 3:'sirbenjaminlockspeiser', 4:'anttirinne', 5:'bytown', 6:'patherpanchali',
+    7:'vanburensupernova', 8:'deebradleybaker', 9:'andiamironman', 10:'oncology', 11:'losangeles', 12:'paracasculture',
+    13:'jaahnavi', 14:'crisisoninfiniteearths', 15:'alexlake', 16:'objectoriented', 17:'henryiv', 18:'disloyal',
+    19:'titanquest', 20:'kaprekarconstant', 21:'jamsetjitata', 22:'carryingthefire', 23:'isleofman',
 }
 
 class Home(View):
@@ -126,7 +125,7 @@ def level4(request):
         if player.level == 3:
             player.level = 4
             player.save()
-        return render(request, 'nth/level4.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[:10], 'rank' : getRank(player)})
+        return render(request, 'nth/level4.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
 
 def level5(request):
     if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
@@ -141,6 +140,258 @@ def level5(request):
             player.level = 5
             player.save()
         return render(request, 'nth/level5.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level6(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 5: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 5:
+            player.level = 6
+            player.save()
+        return render(request, 'nth/level6.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level7(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 6: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 6:
+            player.level = 7
+            player.save()
+        return render(request, 'nth/level7.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level8(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 7: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 7:
+            player.level = 8
+            player.save()
+        return render(request, 'nth/level8.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level9(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 8: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 8:
+            player.level = 9
+            player.save()
+        return render(request, 'nth/level9.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level10(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 9: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 9:
+            player.level = 10
+            player.save()
+        return render(request, 'nth/level10.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level11(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 10: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 10:
+            player.level = 11
+            player.save()
+        return render(request, 'nth/level11.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level12(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 11: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 11:
+            player.level = 12
+            player.save()
+        return render(request, 'nth/level12.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level13(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 12: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 12:
+            player.level = 13
+            player.save()
+        return render(request, 'nth/level13.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level14(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 13: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 13:
+            player.level = 14
+            player.save()
+        return render(request, 'nth/level14.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level15(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 14: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 14:
+            player.level = 15
+            player.save()
+        return render(request, 'nth/level15.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level16(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 15: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 15:
+            player.level = 16
+            player.save()
+        return render(request, 'nth/level16.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level17(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 16: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 16:
+            player.level = 17
+            player.save()
+        return render(request, 'nth/level17.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level18(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 17: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 17:
+            player.level = 18
+            player.save()
+        return render(request, 'nth/level18.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level19(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 18: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 18:
+            player.level = 19
+            player.save()
+        return render(request, 'nth/level19.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level20(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 19: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 19:
+            player.level = 20
+            player.save()
+        return render(request, 'nth/level20.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level21(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 20: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 20:
+            player.level = 21
+            player.save()
+        return render(request, 'nth/level21.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level22(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 21: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 21:
+            player.level = 22
+            player.save()
+        return render(request, 'nth/level22.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
+
+def level23(request):
+    if not request.user.is_authenticated: raise Http404("Page Does Not Exist!")
+
+    player = Player.objects.get(user = request.user)
+    rank = getRank(player)
+
+    if player.level < 22: raise Http404("Page Does Not Exist!")
+
+    else:
+        if player.level == 22:
+            player.level = 23
+            player.save()
+        return render(request, 'nth/level23.html', {'player' : player, 'leaderboard':Player.objects.all().order_by('-level', 'last_time')[1:11], 'rank' : getRank(player)})
 
 def getRank(player):
     rank = 0

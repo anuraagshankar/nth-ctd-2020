@@ -1,0 +1,460 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Design System for Bootstrap 4.">
+  <meta name="author" content="NTH">
+  <title>Network Treasure Hunt</title>
+  <!-- Favicon -->
+  <link href="{% static 'assets/img/brand/nth_logo.png' %}" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="{% static 'assets/vendor/nucleo/css/nucleo.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="{% static 'assets/css/argon.css' %}" rel="stylesheet">
+  <style type="text/css">
+    @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+    body {
+        overflow-y: auto;
+    }
+    /* Float Shadow */
+    table
+    {
+
+      border-collapse: separate;
+      border-spacing: 20px;
+
+    }
+    .hvr-float-shadow {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -moz-osx-font-smoothing: grayscale;
+        position: relative;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+    }
+
+    .hvr-float-shadow:before {
+        pointer-events: none;
+        position: absolute;
+        z-index: -1;
+        content: '';
+        top: 100%;
+        left: 5%;
+        height: 10px;
+        width: 90%;
+        opacity: 0;
+        background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+        /* W3C */
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: transform, opacity;
+        transition-property: transform, opacity;
+    }
+
+    .hvr-float-shadow:hover,
+    .hvr-float-shadow:focus,
+    .hvr-float-shadow:active {
+        -webkit-transform: translateY(-5px);
+        transform: translateY(-5px);
+        /* move the element up by 5px */
+    }
+
+    .hvr-float-shadow:hover:before,
+    .hvr-float-shadow:focus:before,
+    .hvr-float-shadow:active:before {
+        opacity: 1;
+        -webkit-transform: translateY(5px);
+        transform: translateY(5px);
+        /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+    }
+
+    .fixed {
+        background-image: url('img/bg-about1.png');
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+
+    .event-name {
+        font-family: Sol Thin;
+        font-size: 72px;
+        color: white;
+    }
+
+    @media screen and (max-width: 768px) {
+        .web {
+            display: none;
+        }
+        .mob {
+            display: block;
+        }
+        .level_name {
+            margin-top: 70px !important;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .web {
+            display: block;
+        }
+        .mob {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 620px) {
+        .center-on-mob {
+            text-align: center;
+        }
+        .justify-on-mob {
+            text-align: justify;
+        }
+        .event-name {
+            font-size: 36px;
+        }
+        .content-wrap section p {
+            margin: 0;
+            padding: 0.75em 0;
+            font-size: 1.2em;
+            line-height: 1.3;
+        }
+        .logoh {
+            display: none;
+        }
+        .logov {
+            display: block;
+        }
+    }
+
+    @media screen and (min-width: 620px) {
+        .logoh {
+            display: block;
+        }
+        .logov {
+            display: none;
+        }
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 70px;
+        left: -320px;
+        width: 320px;
+        height: 100%;
+        background-color: #205082;
+        color: white;
+        z-index: 50;
+    }
+
+    .item-icon {
+        width: 66px;
+        float: left;
+        font-size: 2em;
+        padding: 10px;
+        text-align: center;
+        color: black;
+    }
+
+    .item-title {
+        width: 152px;
+        float: right;
+        padding-left: 10px;
+    }
+
+    .item-title>h3 {
+        font-size: 18px;
+        margin-top: 17px;
+        color: black;
+    }
+
+    .sidebar-item>a:focus,
+    .sidebar-item>a:active {
+        color: white;
+        background-color: black;
+    }
+
+    .sidebar-item.active {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .close-modal {
+        height: 50px;
+        width: 50px;
+        margin-top: 20px;
+        color: transparent;
+        outline: none;
+        overflow: hidden;
+        border: none;
+        background: url(img/cross.png) no-repeat center center;
+    }
+
+    @media screen and (max-width: 620px) {
+        .close-modal {
+            width: 30px;
+            height: 30px;
+            margin-top: 15px;
+        }
+        .
+    }
+
+    @media screen and (min-width: 993px and max-width: 1020px) {
+        .container {
+            padding-left: 100px;
+            padding-right: 25px;
+        }
+    }
+
+    .level_name{
+        position: absolute;
+        text-align: center;
+        z-index: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .header-social {
+        display: inline-flex;
+        left: 0;
+        padding-right: 5px;
+        position: relative;
+        top: 0;
+    }
+
+    .header-social a {
+        background: none repeat scroll 0px 0px #eb5e4c;
+        color: #ffffff;
+        display: inline-block;
+        height: 40px;
+        margin-right: 10px;
+        width: 40px;
+    }
+
+    .header-social a i {
+        color: #ffffff;
+        font-size: 17px;
+        line-height: 35px;
+        margin-left: 13px;
+        margin-top: 2px;
+    }
+
+    #instructions {
+        height: 280px;
+        overflow: auto;
+        color: white;
+        font-family: Lato;
+        font-size: 22px;
+        margin-top: 30px;
+    }
+
+    #instructions>ol>li {
+        margin-bottom: 0px;
+    }
+}
+    @media screen and (min-width: 768px) {
+        .margin-left {
+            margin-left: 13%;
+        }
+        .level_name h2 {
+            font-size: 35px !important;
+        }
+    }
+
+  </style>
+</head>
+
+<body id="home" style="background-color:#5e72e4; color: whitesmoke;">
+  <div class="web">
+    <img src="{% static 'assets/img/brand/ctd_logo.png' %}" height="60px" width="120px" alt="CTD Logo" style="top: 0;left: 0;position: absolute;">
+    <img src="{% static 'assets/img/brand/pisb_logo.png' %}" width="150" height="50" alt="PISB Logo" style="top: 0;right: 0.4%;position: absolute;">
+  </div>
+  <div class="mob">
+    <img src="{% static 'assets/img/brand/ctd_logo.png' %}" height="40px" width="80px" alt="CTD Logo" style="top: 0;left: 0;position: absolute;">
+    <img src="{% static 'assets/img/brand/pisb_logo.png' %}" width="100" height="34" alt="PISB Logo" style="top: 0;right: 0.4%;position: absolute;">
+  </div>
+  <br>
+  <div style="text-align:center;font-size: xx-large;margin: 0;"><u>LEVEL 16</u></div>
+    
+  <!-- Question Start -->
+  <!-- Web Question Here -->
+  <div class="web" style="text-align: center; font-family: Cambria; font-size: 20px;">
+    <br>
+    <img src="{% static 'assets/images/16.2.jpg' %}" height="360px" width="519px"><br><br>
+    <img src="{% static 'assets/images/16.3.jpg' %}" height="115px" width="432px">
+  </div>
+  <!-- Mobile Question Here -->
+  <div class="mob" style="text-align: center; font-family: Cambria; font-size: 14px;">
+    <br><br><br><br><br>
+    <img src="{% static 'assets/images/16.2.jpg' %}" height="180px" width="270px"><br><br>
+    <img src="{% static 'assets/images/16.3.jpg' %}" height="65px" width="270px">
+  </div>
+  <!-- Question End -->
+
+  <!-- Sidenav Modal Button Start -->
+  <div style="position: absolute; right: 0;top: 35%;line-height: 50px;">
+    <div>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#leaderboard">
+            <i class="ni ni-trophy"></i>
+        </button>
+    </div>
+    <div>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#htmlcode">
+            <i class="ni ni-align-left-2"></i>
+        </button>
+    </div>
+    <div>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#contactus">
+            <i class="ni ni-badge"></i>
+        </button>
+    </div>
+    <div>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#user">
+            <i class="ni ni-single-02"></i>
+        </button>
+    </div>
+  </div>
+  <!-- Sidenav Modal Button End -->
+
+    <div class="modal fade" id="leaderboard" tabindex="-1" role="dialog" aria-labelledby="leaderboardLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="leaderboardModalLabel">Leaderboard</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="color: #32325d;">
+                <!-- Leaderboard -->
+                <table border="0" align="center" style="text-align: center;">
+                    <thead style="font-size: 20px;color: #32325d;"><td>Rank</td><td>Player</td><td style="padding-left: 30px;">Level</td></thead>
+                    {% for p in leaderboard %}
+                    <tr><td></td><td>{{ p.user.username }}</td><td style="padding-left: 30px;">{{ p.level }}</td></tr>
+                    {% endfor %}
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="htmlcode" tabindex="-1" role="dialog" aria-labelledby="htmlcodeLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="htmlcodeModalLabel">Source Code</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="color: #32325d;">
+                <!-- Write basic source code here -->
+                <xmp>
+<html>
+<body>
+<div style="text-align: center; font-family:
+    Cambria; font-size: 20px;">
+<br><br>
+<img src="4.2.jpg"><br>
+<img src="4.3.jpg">
+<!-- I belong to this period. -->
+<!-- It ended with my death. -->
+</div>
+</body>
+</html>
+                </xmp>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="contactus" tabindex="-1" role="dialog" aria-labelledby="contactusLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactusModalLabel">Contact Us</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="color: #32325d;">
+                <!-- Contact Us -->
+                Prajwal Patankar: +91-8888726344 <br>
+                Garvita Jain: +91-8989553238
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="user" tabindex="-1" role="dialog" aria-labelledby="userLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactusModalLabel">User Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="color: #32325d;">
+                <!-- User Profile -->
+                Username: {{ player.user.username }} <br>
+                Name: {{ player.user.first_name }} {{ player.user.last_name }} <br>
+                Level: {{ player.level }} <br>
+                Rank: {{ rank }} <br>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" type="submit" href="/logout/">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <footer class="footer" style="background-color: #5e72e4;">
+    <div style="position: absolute;top: 93%;left: 50%;transform: translateX(-50%);">
+      <div style="width:100%">
+        <a href="https://www.facebook.com/NTHCredenz/" title="Like us on Facebook" target="_blank">
+          <i class="fa fa-facebook-square" style="scale: 3;color: whitesmoke;"></i>
+        </a>
+        <a href="https://www.instagram.com/_nth2019" title="Follow us on Instagram" style="padding-left: 40px;" target="_blank">
+          <i class="fa fa-instagram" style="scale: 3;color: whitesmoke;"></i>
+        </a>
+        <a href="https://twitter.com/NthCredenz" title="Follow us on Twitter" style="padding-left: 40px;" target="_blank">
+          <i class="fa fa-twitter-square" style="scale: 3;color: whitesmoke;"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+  <!-- Core -->
+  <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/popper/popper.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/headroom/headroom.min.js' %}"></script>
+  <!-- Argon JS -->
+  <script src="{% static 'assets/js/argon.js' %}"></script>
+  <script>
+    var table = document.getElementsByTagName('table')[0],
+    rows = table.getElementsByTagName('tr'),
+    text = 'textContent' in document ? 'textContent' : 'innerText';
+    console.log(text);
+
+    for (var i = 1, len = rows.length; i < len; i++){
+        rows[i].children[0][text] = i + rows[i].children[0][text];
+    }
+  </script>
+</body>
+</html>
